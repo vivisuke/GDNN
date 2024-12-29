@@ -18,6 +18,12 @@ func add(layer):
 	if layer.m_type == Layer.LT_AFFINE:
 		layer.set_nInput(ni)
 	m_layers.push_back(layer)
+func forward(inputs):
+	var ptr = inputs
+	for i in range(m_layers.size()):
+		m_layers[i].forward(ptr)
+		ptr = m_layers[i].m_outputs
+
 func _ready():
 	pass # Replace with function body.
 func _process(delta):

@@ -29,6 +29,12 @@ func set_nInput(nInput):
 		for i in range(m_nInput):
 			m_weights[o][i] = rng.randfn(0.0, std)
 	pass
+func set_weights(vv):
+	for o in range(m_nOutput):
+		var v = vv[o]
+		m_bias[o] = v[0]
+		for i in range(m_nInput):
+			m_weights[o][i] = v[i+1]
 func forward(inputs):
 	for o in range(m_nOutput):
 		var sum = m_bias[o]

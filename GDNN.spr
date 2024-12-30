@@ -8,5 +8,15 @@
 0006 ◎ C 12/30 12/30 0.001│ToDo│Network：コンストラクタで入力数を指定
 0007 ◎ C 12/30 12/30 0.001│ToDo│Network：Layer 派生クラスを保持可能に
 0008 ◎ C 12/30 12/30 0.001│ToDo│Network.forward(データ) 実装
-0009 ● C 12/30            │ToDo│
+0009 ● C 12/30            │ToDo│Network を図示？
+0010 ◎ C 12/30 12/30 0.001│ToDo│Network：loss, ∂L/∂y 計算
+0010 ◎ C 12/30 12/30 0.001│ToDo│AffineMap.set_weights() 実装
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
+0010 ● C 12/30            │ToDo│
 0010 ● C 12/30            │ToDo│

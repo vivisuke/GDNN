@@ -10,13 +10,13 @@
 0008 ◎ C 12/30 12/30 0.001│ToDo│Network.forward(データ) 実装
 0009 ● C 12/30            │ToDo│Network を図示？
 0010 ◎ C 12/30 12/30 0.001│ToDo│Network：loss, ∂L/∂y 計算
-0010 ◎ C 12/30 12/30 0.001│ToDo│AffineMap.set_weights() 実装
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
-0010 ● C 12/30            │ToDo│
+0011 ◎ C 12/30 12/30 0.001│ToDo│AffineMap.set_weights() 実装
+0012 ● C 12/30            │ToDo│Network.forward_backward(データ, 教師値) 実装
+0013 ● C 12/30            │ToDo│Network.forward_grad_batch(データ配列, 教師値配列)
+0014 ◎ C 01/01 01/01 0.001│ToDo│Layer.backward()
+0015 ● C 01/01            │ToDo│
+0016 ● C 01/01            │ToDo│
+0017 ● C 01/01            │ToDo│
+0018 ● C 01/01            │ToDo│
+0019 ● C 01/01            │ToDo│
+0020 ● C 01/01            │ToDo│

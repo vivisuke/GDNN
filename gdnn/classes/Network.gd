@@ -25,6 +25,11 @@ func forward(inputs):
 	for i in range(m_layers.size()):
 		m_layers[i].forward(ptr)
 		ptr = m_layers[i].m_outputs
+func backward(grad):
+	var ptr = inputs
+	for i in range(m_layers.size()-1, -1, -1):
+		m_layers[i].forward(ptr)
+		ptr = m_layers[i].m_outputs
 func forward_grad(inputs, tcr_var):		# １つのデータで、loss, ∂L/∂y 計算
 	var loss = 0.0
 	var back = m_layers.back()

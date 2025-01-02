@@ -20,6 +20,8 @@ func print():
 	print("Layer:")
 	print(" nInput = ", m_nInput)
 	print(" nOutput = ", m_nOutput)
+func init_dweights():
+	pass
 func forward(inputs):
 	pass
 func backward(grad):	# 誤差逆伝播

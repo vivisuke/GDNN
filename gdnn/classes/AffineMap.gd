@@ -43,6 +43,11 @@ func set_weights(vv):
 		m_bias[o] = v[0]
 		for i in range(m_nInput):
 			m_weights[o][i] = v[i+1]
+func init_dweights():
+	for o in range(m_nOutput):
+		m_dbias[o] = 0.0
+		for i in range(m_nInput):
+			m_dweights[o][i] = 0.0
 func forward(inputs):
 	m_last_inputs = inputs
 	for o in range(m_nOutput):

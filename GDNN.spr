@@ -16,7 +16,7 @@
 0014 ◎ C 01/01 01/01 0.001│ToDo│Layer.backward()
 0015 ● C 01/01            │ToDo│Layer.init_dweights()
 0016 ● C 01/01            │ToDo│Network.backward(grad)
-0017 ● C 01/01            │ToDo│
-0018 ● C 01/01            │ToDo│
-0019 ● C 01/01            │ToDo│
-0020 ● C 01/01            │ToDo│
+0017 ◎ C 01/05 01/06 0.001│ToDo│BG：ネットワーク入力ノード描画
+0018 ● C 01/05            │ToDo│Network.forward_backward_batch()
+0019 ● C 01/06            │ToDo│
+0020 ● C 01/06            │ToDo│

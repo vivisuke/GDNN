@@ -5,7 +5,7 @@ var net
 func _ready():
 	if false:
 		net = Network.new(2)		# ２入力ネットワーク
-		var a = AffineMap.new(1)	# 1出力アフィン写像
+		var a = AffineMap.new(1)	# １出力アフィン写像
 		net.add(a)
 		a.set_weights([[0.1, 0.2, 0.3],])
 		net.forward([1.0, 1.0])
@@ -13,12 +13,22 @@ func _ready():
 		net.print()
 	if true:
 		net = Network.new(2)		# ２入力ネットワーク
-		var a = AffineMap.new(2)
+		var a = AffineMap.new(2)	# ２出力アフィン写像
 		net.add(a)
 		#a.set_weights([[0.0, 1.0, 0.0], [0.0, 0.0, 0.9], ])
 		a.set_weights([[0.0, 1.0, -1.0], [0.5, 0.5, 0.5], ])
 		const idata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
 		const tdata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]	# 恒等関数
+		net.forward_backward_batch(idata, tdata)
+		net.print()
+	if false:
+		net = Network.new(2)		# ２入力ネットワーク
+		var a = AffineMap.new(1)	# １出力アフィン写像
+		net.add(a)
+		a.set_weights([[0.0, 1.0, -1.0], [0.5, 0.5, 0.5], ])
+		net.add(AfTanh.new(1))
+		const idata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
+		const tdata = [[1.0],[-1.0],[ -1.0],[-1.0],]	# AND
 		net.forward_backward_batch(idata, tdata)
 		net.print()
 	if false:

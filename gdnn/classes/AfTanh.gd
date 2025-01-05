@@ -2,8 +2,10 @@ class_name AfTanh
 extends Layer
 
 
-func _init(nOutput):
-	super(LT_TANH, nOutput)
+func _init(nOutputs):
+	super(LT_TANH, nOutputs)
+	m_nInputs = nOutputs
+	m_grad.resize(m_nInputs)
 func forward(inputs):
 	for o in range(m_nOutputs):
 		m_outputs[o] = tanh(inputs[o])

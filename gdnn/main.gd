@@ -25,7 +25,7 @@ func _ready():
 		net = Network.new(2)		# ２入力ネットワーク
 		var a = AffineMap.new(1)	# １出力アフィン写像
 		net.add(a)
-		a.set_weights([[0.0, 1.0, -1.0], [0.5, 0.5, 0.5], ])
+		a.set_weights([[-0.2, 1.0, 1.0], ])
 		net.add(AfTanh.new(1))		# 活性化関数：tanh()
 		const idata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
 		const tdata = [[1.0],[-1.0],[ -1.0],[-1.0],]	# AND
@@ -48,8 +48,11 @@ func _ready():
 		net.print()
 	$BG.net = net
 	$BG.queue_redraw()
-	var txt = net.m_layers[0].weights_text()
+	var ly = net.m_layers[0]
+	var txt = ly.weights_text()
 	$WeightsLabel.text = "[b, weights] = " + txt
+	$GraphRect.vv_weight = [[ly.m_bias[0], ly.m_weights[0][0], ly.m_weights[0][1], ]]
+	$GraphRect.queue_redraw()
 	pass # Replace with function body.
 func _process(delta):
 	pass

@@ -91,6 +91,10 @@ func forward_grad_batch(inputs, tcr_var):		# 複数データで、loss, ∂L/∂
 	print("loss = ", loss)
 	print("m_grad = ", m_grad)
 	print("")
+func update_weights(alpha):
+	for i in range(m_layers.size()):
+		m_layers[i].update_weights(alpha)
+	pass
 func _ready():
 	pass # Replace with function body.
 func _process(delta):

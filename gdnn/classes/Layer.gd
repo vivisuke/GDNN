@@ -26,6 +26,8 @@ func forward(inputs):
 	pass
 func backward(grad):	# 誤差逆伝播
 	pass
+func update_weights(alpha):
+	pass
 
 func _ready():
 	pass # Replace with function body.

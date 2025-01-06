@@ -11,7 +11,7 @@ func _ready():
 		net.forward([1.0, 1.0])
 		net.forward_backward([1.0, 1.0], [2.0])		# 1.0 の数を数える
 		net.print()
-	if true:
+	if false:
 		net = Network.new(2)		# ２入力ネットワーク
 		var a = AffineMap.new(2)	# ２出力アフィン写像
 		net.add(a)
@@ -21,16 +21,19 @@ func _ready():
 		const tdata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]	# 恒等関数
 		net.forward_backward_batch(idata, tdata)
 		net.print()
-	if false:
+	if true:
 		net = Network.new(2)		# ２入力ネットワーク
 		var a = AffineMap.new(1)	# １出力アフィン写像
 		net.add(a)
 		a.set_weights([[0.0, 1.0, -1.0], [0.5, 0.5, 0.5], ])
-		net.add(AfTanh.new(1))
+		net.add(AfTanh.new(1))		# 活性化関数：tanh()
 		const idata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
 		const tdata = [[1.0],[-1.0],[ -1.0],[-1.0],]	# AND
 		net.forward_backward_batch(idata, tdata)
 		net.print()
+		#net.update_weights(0.1)
+		#net.forward_backward_batch(idata, tdata)
+		#net.print()
 	if false:
 		net = Network.new(2)		# ２入力ネットワーク
 		var a = AffineMap.new(2)
@@ -45,6 +48,8 @@ func _ready():
 		net.print()
 	$BG.net = net
 	$BG.queue_redraw()
+	var txt = net.m_layers[0].weights_text()
+	$WeightsLabel.text = "[b, weights] = " + txt
 	pass # Replace with function body.
 func _process(delta):
 	pass

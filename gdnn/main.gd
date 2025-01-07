@@ -51,6 +51,7 @@ func _ready():
 	pass # Replace with function body.
 func update_view():
 	$BG.queue_redraw()
+	$LossLabel.text = "Loss = %.5f"%net.m_loss
 	var ly = net.m_layers[0]
 	var txt = ly.weights_text()
 	$WeightsLabel.text = "[b, weights] = " + txt

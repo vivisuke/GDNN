@@ -22,6 +22,15 @@ offset_right = 880.0
 offset_bottom = 380.0
 script = ExtResource("3_7jq23")
 
+[node name="LossLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 380.0
+offset_right = 157.0
+offset_bottom = 408.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Loss = "
+
 [node name="WeightsLabel" type="Label" parent="."]
 offset_left = 24.0
 offset_top = 410.0
@@ -33,9 +42,9 @@ text = "[b, weights] = "
 
 [node name="DWeightsLabel" type="Label" parent="."]
 offset_left = 24.0
-offset_top = 444.0
-offset_right = 157.0
-offset_bottom = 472.0
+offset_top = 440.0
+offset_right = 188.0
+offset_bottom = 468.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "∂/∂[b, weights] = "

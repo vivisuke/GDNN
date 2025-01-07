@@ -29,6 +29,12 @@ func weights_text():
 		txt += "%.2f, "%m_weights[0][i]
 	txt += "]"
 	return txt
+func dweights_text():
+	var txt = "[%.2f, "%m_dbias[0]
+	for i in range(m_nInputs):
+		txt += "%.2f, "%m_dweights[0][i]
+	txt += "]"
+	return txt
 func set_nInputs(nInputs):
 	m_nInputs = nInputs
 	m_grad.resize(nInputs)

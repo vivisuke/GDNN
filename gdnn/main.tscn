@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3w46vnudub1p"]
+[gd_scene load_steps=6 format=3 uid="uid://d3w46vnudub1p"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7uhuw"]
 [ext_resource type="Script" path="res://bg.gd" id="2_htso4"]
 [ext_resource type="Script" path="res://graph_rect.gd" id="3_7jq23"]
+[ext_resource type="Texture2D" uid="uid://cf8ub6603xemv" path="res://images/play_arrow_black.png" id="4_03n60"]
+[ext_resource type="Texture2D" uid="uid://dwcb2yobi7dgg" path="res://images/play_arrow_green.png" id="5_tn2he"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7uhuw")
@@ -14,17 +16,36 @@ color = Color(0.941176, 0.941176, 0.941176, 1)
 script = ExtResource("2_htso4")
 
 [node name="GraphRect" type="ColorRect" parent="."]
-offset_left = 420.0
+offset_left = 520.0
 offset_top = 20.0
 offset_right = 880.0
-offset_bottom = 480.0
+offset_bottom = 380.0
 script = ExtResource("3_7jq23")
 
 [node name="WeightsLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 410.0
+offset_right = 157.0
+offset_bottom = 438.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "[b, weights] = "
+
+[node name="DWeightsLabel" type="Label" parent="."]
 offset_left = 24.0
 offset_top = 444.0
 offset_right = 157.0
 offset_bottom = 472.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "[b, weights] = "
+text = "∂/∂[b, weights] = "
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 831.0
+offset_top = 434.0
+offset_right = 879.0
+offset_bottom = 482.0
+texture_normal = ExtResource("4_03n60")
+texture_pressed = ExtResource("5_tn2he")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

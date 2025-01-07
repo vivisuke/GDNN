@@ -1,6 +1,8 @@
 extends Node2D
 
 var net
+const idata = [[1.0, 1.0], [1.0, -1.0], [-1.0, -1.0], [-1.0, 1.0],]
+const tdata = [[1.0], [-1.0], [-1.0], [-1.0],]	# AND
 
 func _ready():
 	if false:
@@ -27,8 +29,6 @@ func _ready():
 		net.add(a)
 		a.set_weights([[-0.2, 1.0, 1.0], ])
 		net.add(AfTanh.new(1))		# 活性化関数：tanh()
-		const idata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
-		const tdata = [[1.0],[-1.0],[ -1.0],[-1.0],]	# AND
 		net.forward_backward_batch(idata, tdata)
 		net.print()
 		#net.update_weights(0.1)
@@ -47,12 +47,22 @@ func _ready():
 		net.forward_grad_batch(idata, tdata)
 		net.print()
 	$BG.net = net
+	update_view()
+	pass # Replace with function body.
+func update_view():
 	$BG.queue_redraw()
 	var ly = net.m_layers[0]
 	var txt = ly.weights_text()
 	$WeightsLabel.text = "[b, weights] = " + txt
+	txt = ly.dweights_text()
+	$DWeightsLabel.text = "∂/∂[b, weights] = " + txt
 	$GraphRect.vv_weight = [[ly.m_bias[0], ly.m_weights[0][0], ly.m_weights[0][1], ]]
 	$GraphRect.queue_redraw()
+func _on_texture_button_pressed():
+	net.update_weights(0.1)
+	net.forward_grad_batch(idata, tdata)
+	net.print()
+	update_view()
 	pass # Replace with function body.
 func _process(delta):
 	pass

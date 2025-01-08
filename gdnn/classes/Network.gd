@@ -18,7 +18,7 @@ func print():
 	print("m_grad = ", m_grad)
 func add(layer):
 	var ni = m_nInputs if m_layers.is_empty() else m_layers.back().m_nOutputs
-	if layer.m_type == Layer.LT_AFFINE:
+	if layer.m_type == Layer.LT_AFFINE || layer.m_type == Layer.LT_TANH:
 		layer.set_nInputs(ni)
 	m_layers.push_back(layer)
 func forward(inputs):
@@ -41,7 +41,7 @@ func forward_grad(inputs, tcr_var):		# １つのデータで、loss, ∂L/∂y �
 		var d = back.m_outputs[o] - tcr_var[o]
 		m_grad[o] = d
 		m_loss += d * d / 2.0
-	m_loss /= m_grad.size()
+	#m_loss /= m_grad.size()
 	print("loss = ", m_loss)
 func init_dweights():
 	for i in range(m_layers.size()):
@@ -55,7 +55,7 @@ func forward_backward(inputs, tcr_var):		# １つのデータで、loss, ∂L/�
 		var d = back.m_outputs[o] - tcr_var[o]
 		m_grad[o] = d
 		m_loss += d * d / 2.0
-	m_loss /= m_grad.size()
+	#m_loss /= m_grad.size()
 	print("loss = ", m_loss)
 	init_dweights()			# dbias, dweights を 0.0 二初期化
 	backward(m_grad)
@@ -72,7 +72,7 @@ func forward_backward_batch(inputs, tcr_var):	# 複数データで、loss, ∂L/
 			m_grad[o] = d
 			m_loss += d * d / 2.0
 		backward(m_grad)
-	m_loss /= m_grad.size() * inputs.size()
+	#m_loss /= m_grad.size() * inputs.size()
 	print("loss = ", m_loss)
 func forward_grad_batch(inputs, tcr_var):		# 複数データで、loss, ∂L/∂y 計算
 	m_loss = 0.0
@@ -88,7 +88,7 @@ func forward_grad_batch(inputs, tcr_var):		# 複数データで、loss, ∂L/∂
 			m_loss += d * d / 2.0
 	for o in range(m_grad.size()):
 		m_grad[o] /= inputs.size()
-	m_loss /= m_grad.size() * inputs.size()
+	#m_loss /= m_grad.size() * inputs.size()
 	print("loss = ", m_loss)
 	print("m_grad = ", m_grad)
 	print("")

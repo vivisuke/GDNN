@@ -49,7 +49,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "∂/∂[b, weights] = "
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="TrainButton" type="TextureButton" parent="."]
 offset_left = 831.0
 offset_top = 434.0
 offset_right = 879.0
@@ -57,4 +57,4 @@ offset_bottom = 482.0
 texture_normal = ExtResource("4_03n60")
 texture_pressed = ExtResource("5_tn2he")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TrainButton" to="." method="_on_texture_button_pressed"]

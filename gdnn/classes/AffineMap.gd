@@ -35,6 +35,14 @@ func dweights_text():
 		txt += "%.2f, "%m_dweights[0][i]
 	txt += "]"
 	return txt
+func get_weights():
+	var w = []
+	w.resize(m_nOutputs)
+	for o in range(m_nOutputs):
+		w[o] = [m_bias[o]]
+		for i in range(m_nInputs):
+			w[o].push_back(m_weights[o][i])
+	return w
 func set_nInputs(nInputs):
 	m_nInputs = nInputs
 	m_grad.resize(nInputs)
@@ -80,10 +88,11 @@ func backward(grad):
 			sum += m_weights[o][i] * grad[o]
 		m_grad[i] = sum
 	for o in range(m_nOutputs):
-		m_dbias[o] = grad[o]
-		m_dweights[o].fill(0.0)
+		m_dbias[o] += grad[o]
 		for i in range(m_nInputs):
+			print("m_last_inputs[%] * grad[%] = %f"%[i, o, m_last_inputs[i] * grad[o]])
 			m_dweights[o][i] += m_last_inputs[i] * grad[o]
+			print("m_dweights[%d][%d] = %f"%[o, i, m_dweights[o][i]])
 func update_weights(alpha):
 	for o in range(m_nOutputs):
 		m_bias[o] -= m_dbias[o] * alpha

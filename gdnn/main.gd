@@ -67,7 +67,7 @@ func _on_texture_button_pressed():
 	update_view()
 	pass # Replace with function body.
 func _process(delta):
-	if $TrainButton.is_pressed():
+	if $HBC/TrainButton.is_pressed():
 		#print("Pressed.")
 		_on_texture_button_pressed()
 		pass

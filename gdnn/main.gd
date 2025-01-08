@@ -41,10 +41,9 @@ func _ready():
 		#a.set_weights([[0.0, 1.0, 0.0], [0.0, 0.0, 1.0], ])
 		a.set_weights([[0.0, 1.0, 0.0], [0.0, 0.0, 0.9], ])
 		#net.forward([1.0, 1.0])
-		#net.forward_grad([1.0, 1.0], [1.0, 1.0])
 		const idata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
 		const tdata = [[1.0, 1.0],[1.0, -1.0],[-1.0, -1.0],[-1.0, 1.0],]
-		net.forward_grad_batch(idata, tdata)
+		net.forward_backward(idata, tdata)
 		net.print()
 	$BG.net = net
 	update_view()

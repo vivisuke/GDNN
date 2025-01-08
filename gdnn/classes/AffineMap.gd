@@ -26,9 +26,9 @@ func print():
 func weights_text():
 	var txt = "["
 	for o in range(m_nOutputs):
-		txt += "[%.2f, "%m_bias[0]
+		txt += "[%.2f, "%m_bias[o]
 		for i in range(m_nInputs):
-			txt += "%.2f, "%m_weights[0][i]
+			txt += "%.2f, "%m_weights[o][i]
 		txt += "] ,"
 	txt += "]"
 	return txt

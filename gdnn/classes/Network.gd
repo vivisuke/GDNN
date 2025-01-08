@@ -31,18 +31,18 @@ func backward(grad):
 	for i in range(m_layers.size()-1, -1, -1):
 		m_layers[i].backward(ptr)
 		ptr = m_layers[i].m_grad
-func forward_grad(inputs, tcr_var):		# １つのデータで、loss, ∂L/∂y 計算
-	m_loss = 0.0
-	var back = m_layers.back()
-	m_grad.resize(back.m_nOutputs)
-	#m_grad.fill(0.0)
-	forward(inputs)
-	for o in range(m_grad.size()):
-		var d = back.m_outputs[o] - tcr_var[o]
-		m_grad[o] = d
-		m_loss += d * d / 2.0
-	#m_loss /= m_grad.size()
-	print("loss = ", m_loss)
+#func forward_grad(inputs, tcr_var):		# １つのデータで、loss, ∂L/∂y 計算
+#	m_loss = 0.0
+#	var back = m_layers.back()
+#	m_grad.resize(back.m_nOutputs)
+#	#m_grad.fill(0.0)
+#	forward(inputs)
+#	for o in range(m_grad.size()):
+#		var d = back.m_outputs[o] - tcr_var[o]
+#		m_grad[o] = d
+#		m_loss += d * d / 2.0
+#	#m_loss /= m_grad.size()
+#	print("loss = ", m_loss)
 func init_dweights():
 	for i in range(m_layers.size()):
 		m_layers[i].init_dweights()
@@ -74,24 +74,24 @@ func forward_backward_batch(inputs, tcr_var):	# 複数データで、loss, ∂L/
 		backward(m_grad)
 	#m_loss /= m_grad.size() * inputs.size()
 	print("loss = ", m_loss)
-func forward_grad_batch(inputs, tcr_var):		# 複数データで、loss, ∂L/∂y 計算
-	m_loss = 0.0
-	var back = m_layers.back()
-	m_grad.resize(back.m_nOutputs)
-	m_grad.fill(0.0)
-	for ix in range(inputs.size()):
-		forward(inputs[ix])
-		print("back.m_outputs = ", back.m_outputs)
-		for o in range(m_grad.size()):
-			var d = back.m_outputs[o] - tcr_var[ix][o]
-			m_grad[o] += d
-			m_loss += d * d / 2.0
-	for o in range(m_grad.size()):
-		m_grad[o] /= inputs.size()
-	#m_loss /= m_grad.size() * inputs.size()
-	print("loss = ", m_loss)
-	print("m_grad = ", m_grad)
-	print("")
+#func forward_grad_batch(inputs, tcr_var):		# 複数データで、loss, ∂L/∂y 計算
+#	m_loss = 0.0
+#	var back = m_layers.back()
+#	m_grad.resize(back.m_nOutputs)
+#	m_grad.fill(0.0)
+#	for ix in range(inputs.size()):
+#		forward(inputs[ix])
+#		print("back.m_outputs = ", back.m_outputs)
+#		for o in range(m_grad.size()):
+#			var d = back.m_outputs[o] - tcr_var[ix][o]
+#			m_grad[o] += d
+#			m_loss += d * d / 2.0
+#	for o in range(m_grad.size()):
+#		m_grad[o] /= inputs.size()
+#	#m_loss /= m_grad.size() * inputs.size()
+#	print("loss = ", m_loss)
+#	print("m_grad = ", m_grad)
+#	print("")
 func update_weights(alpha):
 	for i in range(m_layers.size()):
 		m_layers[i].update_weights(alpha)

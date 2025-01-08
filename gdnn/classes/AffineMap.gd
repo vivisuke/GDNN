@@ -24,9 +24,12 @@ func print():
 		print("   ", m_dbias[o], ", ", m_dweights[o])
 	print(" outputs = ", m_outputs)
 func weights_text():
-	var txt = "[%.2f, "%m_bias[0]
-	for i in range(m_nInputs):
-		txt += "%.2f, "%m_weights[0][i]
+	var txt = "["
+	for o in range(m_nOutputs):
+		txt += "[%.2f, "%m_bias[0]
+		for i in range(m_nInputs):
+			txt += "%.2f, "%m_weights[0][i]
+		txt += "] ,"
 	txt += "]"
 	return txt
 func dweights_text():

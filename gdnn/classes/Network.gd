@@ -9,6 +9,10 @@ var m_layers = []
 
 func _init(nInputs):
 	m_nInputs = nInputs	
+func init_weights():
+	for i in range(m_layers.size()):
+		if m_layers[i].m_type == Layer.LT_AFFINE:
+			m_layers[i].init_weights()
 func print():
 	print("nInputs = ", m_nInputs)
 	#print("m_inputs = ", m_inputs)

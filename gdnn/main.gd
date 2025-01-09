@@ -67,10 +67,13 @@ func _on_texture_button_pressed():
 	net.forward_backward_batch(idata, tdata)
 	#net.print()
 	update_view()
-	pass # Replace with function body.
+func _on_replay_button_pressed():
+	itr = 0
+	net.init_weights()
+	net.init_dweights()
+	update_view()
 func _process(delta):
 	if $HBC/TrainButton.is_pressed():
 		#print("Pressed.")
 		_on_texture_button_pressed()
 		pass
-	pass

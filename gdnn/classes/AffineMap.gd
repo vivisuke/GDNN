@@ -52,11 +52,14 @@ func get_weights():
 func set_nInputs(nInputs):
 	m_nInputs = nInputs
 	m_grad.resize(nInputs)
-	var std = 1.0/sqrt(nInputs)
 	m_bias.resize(m_nOutputs)
 	m_weights.resize(m_nOutputs)
 	m_dbias.resize(m_nOutputs)
 	m_dweights.resize(m_nOutputs)
+	init_weights()
+	pass
+func init_weights():
+	var std = 1.0/sqrt(m_nInputs)
 	for o in range(m_nOutputs):
 		m_bias[o] = rng.randfn(0.0, std)
 		m_weights[o] = []
@@ -65,7 +68,6 @@ func set_nInputs(nInputs):
 			m_weights[o][i] = rng.randfn(0.0, std)
 		m_dweights[o] = []
 		m_dweights[o].resize(m_nInputs)
-	pass
 func set_weights(vv):
 	for o in range(m_nOutputs):
 		var v = vv[o]

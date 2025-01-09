@@ -7,6 +7,8 @@ const idata = [[1.0, 1.0], [1.0, -1.0], [-1.0, 1.0], [-1.0, -1.0], ]
 const tdata = [[-1.0], [1.0], [1.0], [-1.0],]	# XOR
 #const tdata = [[1.0, 1.0], [1.0, -1.0], [-1.0, -1.0], [-1.0, 1.0],]	# 恒等関数
 
+var itr = 0
+
 func _ready():
 	if false:
 		net = Network.new(2)		# ２入力ネットワーク
@@ -50,7 +52,7 @@ func _ready():
 	pass # Replace with function body.
 func update_view():
 	$BG.queue_redraw()
-	$LossLabel.text = "Loss = %.5f"%net.m_loss
+	$LossLabel.text = "#%d: Loss = %.5f"%[itr, net.m_loss]
 	var ly = net.m_layers[0]
 	var txt = ly.weights_text()
 	$WeightsLabel.text = "[b, weights] = " + txt
@@ -60,6 +62,7 @@ func update_view():
 	$GraphRect.vv_weight = ly.get_weights()		# 重みベクター（含バイアス）取得
 	$GraphRect.queue_redraw()
 func _on_texture_button_pressed():
+	itr += 1
 	net.update_weights(0.1)
 	net.forward_backward_batch(idata, tdata)
 	#net.print()

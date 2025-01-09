@@ -29,13 +29,16 @@ func weights_text():
 		txt += "[%.2f, "%m_bias[o]
 		for i in range(m_nInputs):
 			txt += "%.2f, "%m_weights[o][i]
-		txt += "] ,"
+		txt += "], "
 	txt += "]"
 	return txt
 func dweights_text():
-	var txt = "[%.2f, "%m_dbias[0]
-	for i in range(m_nInputs):
-		txt += "%.2f, "%m_dweights[0][i]
+	var txt = "["
+	for o in range(m_nOutputs):
+		txt += "[%.2f, "%m_dbias[o]
+		for i in range(m_nInputs):
+			txt += "%.2f, "%m_dweights[o][i]
+		txt += "], "
 	txt += "]"
 	return txt
 func get_weights():
